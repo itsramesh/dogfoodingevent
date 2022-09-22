@@ -15,7 +15,7 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Alert, Col, Row } from 'react-bootstrap';
+import { Alert, Col, Row, Container } from 'react-bootstrap';
 import { BrProps } from '@bloomreach/react-sdk';
 import { ContainerItem, getContainerItemContent } from '@bloomreach/spa-sdk';
 import styles from './ProductHighlight.module.scss';
@@ -64,6 +64,7 @@ export function ProductHighlight({ component, page }: BrProps<ContainerItem>): R
     <div className={`${styles.highlight} mw-container mx-auto`}>
       <div className={styles.grid__header}>{title && <h4 className="mb-4">{title}</h4>}</div>
       <Row>
+      <Container>
         {productRefs
           ?.filter((productRef) => !!productRef.id || !!productRef.code)
           ?.map((productRef) => (
@@ -78,6 +79,7 @@ export function ProductHighlight({ component, page }: BrProps<ContainerItem>): R
               setError={setError}
             />
           ))}
+          </Container>
       </Row>
     </div>
   );

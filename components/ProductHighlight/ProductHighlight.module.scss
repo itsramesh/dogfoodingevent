@@ -17,6 +17,8 @@
 $highlight-img-max-size: 180px;
 
 .highlight {
+  box-shadow: 0 0 5px #ccc;
+  padding: 20px;
   div {
     font-size: 14px;
   }

@@ -159,7 +159,7 @@ export function App({
                         />
                         <div className={`${styles.navbar__brand} order-lg-2 mr-3 mr-lg-0`}>
                           <span
-                            className="span0"> Pacific Paint</span>
+                            className="span0">  Pacific Paint</span>
                             <span
                             className={`${styles.navbar__brand__span2}`}> Inspiration</span>
                             </div>
@@ -191,11 +191,11 @@ export function App({
                   </Navbar>
                 </header>
               <BrComponent path="top">
-                <Container as="section">
+                <Container as="section" fluid>
                   <BrComponent />
                 </Container>
               </BrComponent>
-              <Container as="section" className="flex-fill pt-4">
+              <Container as="section" fluid className="flex-fill pt-4">
                 <Row className="flex-lg-nowrap">
                   <BrComponent path="main">
                     <Col xs="auto" className="flex-fill">
@@ -215,17 +215,11 @@ export function App({
                 </Container>
               </BrComponent>
               <BrComponent path="footer">
-                <footer className="bg-secondary text-light py-3">
-                  <Container>
-                    <Row>
-                      <Col lg="9" xl="10">
-                        <BrComponent />
-                      </Col>
-                      <Col lg="3" xl="2" className="text-center text-lg-right py-lg-2">
-                        &copy; Bloomreach 2021
-                      </Col>
-                    </Row>
-                  </Container>
+                <footer className="footer bg-secondary text-light py-3">
+                  <p>
+                      This site is a demo website created for Bloomreach Experience Cloud. <br />
+                      Images are provided by Pexels and Unsplash &copy; Bloomreach 2021
+                  </p>
                   {!contextPage?.isPreview() && <BrCookieConsent csUpdate={updateCookieConsentVal} />}
                 </footer>
               </BrComponent>

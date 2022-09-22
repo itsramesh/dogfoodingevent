@@ -67,5 +67,12 @@ mark, .mark {
 
 .navbar-brand {
   display: flex !important;
+  align-items: center;
 }
 
+.footer {
+  text-align: center;
+  background-color: #eef4ee !important;
+  color: #76767f !important;
+  font-size: .9rem;
+}
