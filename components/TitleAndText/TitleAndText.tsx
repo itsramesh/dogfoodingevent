@@ -46,11 +46,17 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
 
   // eslint-disable-next-line dot-notation
   const freeshippingstyle = styles['freeshipping'];
+  // eslint-disable-next-line dot-notation
+  const bannerTitle = styles['banner-title'];
+  // eslint-disable-next-line dot-notation
+  const bannerTitleBG = styles['banner-title-bg'];
+  // eslint-disable-next-line dot-notation
+  const bannetTitleText = styles['banner-title-text']
 
   return (
     <>
 
-      {title !== 'Free shipping' && <>
+      {title !== 'Free shipping' && title !== 'Painting a wall in three easy steps' && <>
         <section className={`${sectionStyle} pb-1 text-${textalignment}`}>
           {titlesize === 'H1' && <h1 className="mb-2">{title}</h1>}
           {titlesize === 'H2' && <h2 className="mb-2">{title}</h2>}
@@ -62,6 +68,25 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
       </>}
       {title === 'Free shipping' && <>
         <div className={freeshippingstyle}>{title}</div>
+      </>}
+      {title === 'Painting a wall in three easy steps' && <>
+        <div className={bannerTitle}>
+          <div className={bannerTitleBG}>
+            <div>
+              Tutorial
+            </div>
+            <div className={bannetTitleText}>
+              {title}
+            </div>
+            <div>
+              {text}
+            </div>
+            <div>
+              <span></span>
+            </div>
+            <div></div>
+          </div>
+        </div>
       </>}
     </>
   );
