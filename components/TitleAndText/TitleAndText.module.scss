@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
- @import '~bootstrap/scss/functions';
- @import '~bootstrap/scss/variables';
- @import '~bootstrap/scss/mixins';
- @import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
 
 .style1 {
   @extend .bg-white;
@@ -27,4 +27,15 @@
 .style2 {
   @extend .bg-primary;
   @extend .text-white;
+}
+
+.freeshipping {
+  background-color: #8091aa;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: -100%;
+  margin-left: -100%;
+  padding: 5px 0;
 }

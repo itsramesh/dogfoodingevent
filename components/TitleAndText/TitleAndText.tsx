@@ -44,14 +44,25 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
   const { titlesize = 'H3', textalignment = 'center', style = 'style1' } = component.getParameters();
   const sectionStyle = styles[style];
 
+  // eslint-disable-next-line dot-notation
+  const freeshippingstyle = styles['freeshipping'];
+
   return (
-    <section className={`${sectionStyle} pt-4 text-${textalignment}`}>
-      {titlesize === 'H1' && <h1 className="mb-2">{title}</h1>}
-      {titlesize === 'H2' && <h2 className="mb-2">{title}</h2>}
-      {titlesize === 'H3' && <h3 className="mb-2">{title}</h3>}
-      {titlesize === 'H4' && <h4 className="mb-2">{title}</h4>}
-      {titlesize === 'H5' && <h5 className="mb-2">{title}</h5>}
-      {text && <div>{text}</div>}
-    </section>
+    <>
+
+      {title !== 'Free shipping' && <>
+        <section className={`${sectionStyle} pt-4 pb-4 text-${textalignment}`}>
+          {titlesize === 'H1' && <h1 className="mb-2">{title}</h1>}
+          {titlesize === 'H2' && <h2 className="mb-2">{title}</h2>}
+          {titlesize === 'H3' && <h3 className="mb-2">{title}</h3>}
+          {titlesize === 'H4' && <h4 className="mb-2">{title}</h4>}
+          {titlesize === 'H5' && <h5 className="mb-2">{title}</h5>}
+          {text && <div>{text}</div>}
+        </section>
+      </>}
+      {title === 'Free shipping' && <>
+        <div className={freeshippingstyle}>{title}</div>
+      </>}
+    </>
   );
 }
