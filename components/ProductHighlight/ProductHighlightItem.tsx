@@ -134,7 +134,7 @@ export function ProductHighlightItem({ connectorId, itemId, totalItem, setError 
               <Image src={thumbnail} alt={displayName ?? ''} />
             </div>
           )}
-          <div className={`${styles.name} d-block h4 text-truncate mb-3`}>
+          <div className={`${styles.name} d-block h4 text-truncate mb-3 w-50`}>
             {item?.displayName}
           </div>
           <h4 className="mb-4">
