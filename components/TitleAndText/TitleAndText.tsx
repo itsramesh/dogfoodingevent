@@ -51,7 +51,7 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
   // eslint-disable-next-line dot-notation
   const bannerTitleBG = styles['banner-title-bg'];
   // eslint-disable-next-line dot-notation
-  const bannetTitleText = styles['banner-title-text']
+  const bannetTitleText = styles['banner-title-text'];
 
   return (
     <>
