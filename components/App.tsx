@@ -191,7 +191,7 @@ export function App({
                   </Navbar>
                 </header>
               <BrComponent path="top">
-                <Container as="section">
+                <Container fluid as="section">
                   <BrComponent />
                 </Container>
               </BrComponent>

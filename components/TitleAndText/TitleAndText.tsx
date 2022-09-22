@@ -52,6 +52,8 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
   const bannerTitleBG = styles['banner-title-bg'];
   // eslint-disable-next-line dot-notation
   const bannetTitleText = styles['banner-title-text'];
+  // eslint-disable-next-line dot-notation
+  const bannetTitleHeading = styles['banner-title-heading'];
 
   return (
     <>
@@ -72,7 +74,7 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
       {title === 'Painting a wall in three easy steps' && <>
         <div className={bannerTitle}>
           <div className={bannerTitleBG}>
-            <div>
+            <div className={bannetTitleHeading}>
               Tutorial
             </div>
             <div className={bannetTitleText}>

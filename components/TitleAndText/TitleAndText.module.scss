@@ -54,6 +54,7 @@
 .banner-title-bg {
   width: 800px;
   background: white;
+  padding: 25px;
 }
 
 .banner-title-tut-text {
@@ -76,7 +77,7 @@
   font-family: sans-serif;
   font-size: 40px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   align-self: stretch;
   background-color: transparent;
   letter-spacing: -0.40px;
@@ -84,4 +85,11 @@
   mix-blend-mode: normal;
   position: relative;
   text-align: left;
+  margin-bottom: 15px;
+}
+
+.banner-title-heading {
+  font-size: 30px;
+    color: #7f90aa;
+    font-style: italic;
 }
