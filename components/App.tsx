@@ -139,23 +139,31 @@ export function App({
                 <Meta page={contextPage!} />
                 <header>
                   <Navbar bg="light" expand="lg" sticky="top" className="py-2 py-lg-3">
-                    <Container className="justify-content-start px-sm-3">
+                  <div className="frame-2-xexDKZ" data-id="I427:14162;370:22507">
+                    <div className="rectangle-56-5blbCb" data-id="I427:14162;370:22508"></div>
+                    <div className="rectangle-57-5blbCb" data-id="I427:14162;370:22509"></div>
+                </div>
                       <Navbar.Brand as={Link} href={contextPage?.getUrl('/')} title="Pacific Nuts & Bolts">
                         <Image
                           alt="Pacific Nuts & Bolts"
-                          src="/logo.png"
-                          srcSet="/logo.png 1x, /logo@2x.png 2x"
-                          height="30"
+                          src="/icon@2x.svg"
+                          height="25"
                           className="d-none d-sm-block"
                         />
 
                         <Image
                           alt="Pacific Nuts & Bolts"
-                          src="/logo-sm.png"
-                          srcSet="/logo-sm.png 1x, /logo-sm@2x.png 2x"
-                          height="30"
+                          src="/icon@2x.svg"
+                          height="25"
                           className="d-block d-sm-none"
                         />
+                        <div className={`${styles.navbar__brand} order-lg-2 mr-3 mr-lg-0`}>
+                          <span
+                            className="span0"> Pacific Paint</span>
+                            <span
+                            className={`${styles.navbar__brand__span2}`}> Inspiration</span>
+                            </div>
+
                         {getCookieConsentValue() && <BrPixel
                           accountId={discoveryAccountId ?? ''}
                           domainKey={discoveryDomainKey ?? ''}
@@ -180,11 +188,10 @@ export function App({
                           </Navbar.Collapse>
                         </>
                       )}
-                    </Container>
                   </Navbar>
                 </header>
               <BrComponent path="top">
-                <Container as="section" fluid>
+                <Container as="section">
                   <BrComponent />
                 </Container>
               </BrComponent>

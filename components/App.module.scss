@@ -19,6 +19,23 @@
 @import '~bootstrap/scss/mixins';
 
 .navbar {
+  &__brand {
+    background-color: transparent;
+    color: #607492;
+    font-family: "EB Garamond", Helvetica;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.25px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: left;
+    width: fit-content;
+    &__span2 {
+      color: #99a7b6;
+    }
+  }
   &__container {
     max-width: 300px;
 
