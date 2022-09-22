@@ -15,7 +15,7 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Alert, Col, Row, Container } from 'react-bootstrap';
+import { Alert, Col, Row } from 'react-bootstrap';
 import { BrProps } from '@bloomreach/react-sdk';
 import { ContainerItem, getContainerItemContent } from '@bloomreach/spa-sdk';
 import styles from './ProductHighlight.module.scss';

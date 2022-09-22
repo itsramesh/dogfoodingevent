@@ -33,12 +33,20 @@ interface MultiBannerCarouselParameters {
 interface MultiBannerCarouselCompound {
   title: string;
   banners: BannerDocument[];
+  openuistring: string;
 }
 
-export function MultiBannerCarousel({ component, page }: BrProps<ContainerItem>): React.ReactElement | null {
+export function MultiBannerCarousel({
+  component,
+  page,
+}: BrProps<ContainerItem>): React.ReactElement | null {
   const { interval = 0 } = component.getParameters<MultiBannerCarouselParameters>();
-  const { title, banners } = getContainerItemContent<MultiBannerCarouselCompound>(component, page) ?? {};
+  const { title, banners, openuistring } = getContainerItemContent<MultiBannerCarouselCompound>(component, page) ?? {};
   const slides = [];
+
+  const images = JSON.parse(openuistring ?? '');
+  const arrFiles = images.map((val: any) => val.files);
+  const UrlArr = arrFiles.map((url: any) => url.webImage.url);
 
   // Because the props object is used in both SSR and CSR, we should avoid mutating it.
   for (let i = 0; i < (banners?.length ?? 0); i += DOCUMENTS_PER_SLIDE) {
@@ -46,28 +54,55 @@ export function MultiBannerCarousel({ component, page }: BrProps<ContainerItem>)
   }
 
   return (
-    <div className="mw-container mx-auto my-4">
-      {title && <h3 className={styles.carouselTitle}>{title}</h3>}
-      <Carousel
-        controls={slides.length > 1}
-        indicators={false}
-        interval={interval}
-        prevIcon={<FontAwesomeIcon icon={faChevronLeft} size="2x" className="text-secondary" />}
-        nextIcon={<FontAwesomeIcon icon={faChevronRight} size="2x" className="text-secondary" />}
-        className={styles.carousel}
-      >
-        {slides.map((slide, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Carousel.Item key={index}>
-            <Row>
-              {slide.map((banner, internalIndex) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <Col key={`${index}-${internalIndex}`} as={Banner} xs={12 / DOCUMENTS_PER_SLIDE} document={banner} />
-              ))}
-            </Row>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </div>
+    <>
+      {!UrlArr && (
+        <div className="mw-container mx-auto my-4">
+          {title && <h3 className={styles.carouselTitle}>{title}</h3>}
+          <Carousel
+            controls={slides.length > 1}
+            indicators={false}
+            interval={interval}
+            prevIcon={
+              <FontAwesomeIcon
+                icon={faChevronLeft}
+                size="2x"
+                className="text-secondary"
+              />
+            }
+            nextIcon={
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                size="2x"
+                className="text-secondary"
+              />
+            }
+            className={styles.carousel}
+          >
+            {slides.map((slide, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Carousel.Item key={index}>
+                <Row>
+                  {slide.map((banner, internalIndex) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <Col
+                      key={`${index}-${internalIndex}`}
+                      as={Banner}
+                      xs={12 / DOCUMENTS_PER_SLIDE}
+                      document={banner}
+                    />
+                  ))}
+                </Row>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
+      )}
+      {UrlArr.length > 0 && <>
+        {UrlArr.map((p: any) => {
+          return <img className="bynder-img" key={p} src={p} />;
+        })}
+        {/* <img src={UrlArr[0]} alt="" /> */}
+      </>}
+    </>
   );
 }
