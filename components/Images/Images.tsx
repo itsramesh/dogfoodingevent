@@ -50,7 +50,7 @@ export function Images({ component, page }: BrProps): React.ReactElement | null 
   }
 
   return (
-    <Container>
+    <Container className={`${styles.images__reducingcontainersize}`}>
       {error && (
         <Alert variant="danger" className="mt-3 mx-3">
           Image(s) referred by this component cannot be loaded
