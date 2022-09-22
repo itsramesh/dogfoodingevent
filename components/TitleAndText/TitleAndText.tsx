@@ -51,7 +51,7 @@ export function TitleAndText({ component, page }: BrProps<ContainerItem>): React
     <>
 
       {title !== 'Free shipping' && <>
-        <section className={`${sectionStyle} pt-4 pb-4 text-${textalignment}`}>
+        <section className={`${sectionStyle} pb-1 text-${textalignment}`}>
           {titlesize === 'H1' && <h1 className="mb-2">{title}</h1>}
           {titlesize === 'H2' && <h2 className="mb-2">{title}</h2>}
           {titlesize === 'H3' && <h3 className="mb-2">{title}</h3>}

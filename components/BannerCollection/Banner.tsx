@@ -54,7 +54,6 @@ export const Banner = React.forwardRef(
           relative
         />
 
-        {title && <span className="d-block h4 mb-3">{title}</span>}
         {image && (
           <span className={`${styles.banner__container} d-block position-relative h-0 mb-3`}>
             <Image
@@ -64,6 +63,7 @@ export const Banner = React.forwardRef(
             />
           </span>
         )}
+        {title && <span className="d-block h4 mb-3">{title}</span>}
         {content.value && (
           <BrRichTextContent
             page={page!}

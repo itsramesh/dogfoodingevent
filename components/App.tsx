@@ -191,11 +191,11 @@ export function App({
                   </Navbar>
                 </header>
               <BrComponent path="top">
-                <Container as="section" fluid>
+                <Container as="section">
                   <BrComponent />
                 </Container>
               </BrComponent>
-              <Container as="section" fluid className="flex-fill pt-4">
+              <Container as="section" className="flex-fill pt-4">
                 <Row className="flex-lg-nowrap">
                   <BrComponent path="main">
                     <Col xs="auto" className="flex-fill">
