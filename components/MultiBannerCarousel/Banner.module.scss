@@ -19,7 +19,7 @@
   padding-bottom: 24px;
   &__image {
     height: 160px !important;
-    object-fit: contain;
+    object-fit: fill;
     margin-bottom: 16px;
   }
   &__data {
