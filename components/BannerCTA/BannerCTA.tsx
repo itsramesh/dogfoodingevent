@@ -34,7 +34,7 @@ export function BannerCTA({ component, page }: BrProps<ContainerItem>): React.Re
   const document = link && page?.getContent<Document>(link);
 
   return (
-    <Jumbotron as={Row} fluid className={`${styles.bannerCTA} bg-primary text-light my-0`}>
+    <Jumbotron as={Row} fluid className={`${styles.bannerCTA} text-light my-0`}>
       <Container>
         {title && <h3 className="mb-2">{title}</h3>}
         {content && <BrRichTextContent page={page!} content={{ html: content.value }} />}
