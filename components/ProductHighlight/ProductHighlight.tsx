@@ -64,7 +64,7 @@ export function ProductHighlight({ component, page }: BrProps<ContainerItem>): R
     <div className={`${styles.highlight} mw-container mx-auto`}>
       <div className={styles.grid__header}>{title && <h4 className="mb-4">{title}</h4>}</div>
       <Row>
-      <Container>
+      {/* <Container> */}
         {productRefs
           ?.filter((productRef) => !!productRef.id || !!productRef.code)
           ?.map((productRef) => (
@@ -79,7 +79,7 @@ export function ProductHighlight({ component, page }: BrProps<ContainerItem>): R
               setError={setError}
             />
           ))}
-          </Container>
+          {/* </Container> */}
       </Row>
     </div>
   );
