@@ -73,6 +73,7 @@ export function ProductHighlight({ component, page }: BrProps<ContainerItem>): R
               md="3"
               className="mb-4"
               itemId={{ id: productRef.id, code: productRef.code }}
+              totalItem={productRefs.length}
               connectorId={connectorId}
               setError={setError}
             />

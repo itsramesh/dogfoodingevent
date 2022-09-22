@@ -21,19 +21,18 @@ import { BrPageContext } from '@bloomreach/react-sdk';
 import { ItemIdModel, ProductDetailInputProps, useProductDetail } from '@bloomreach/connector-components-react';
 import { CommerceContext } from '../CommerceContext';
 import styles from './ProductHighlight.module.scss';
-import { isLoading, notEmpty } from '../../src/utils';
+import { isLoading } from '../../src/utils';
 
 import { Link } from '../Link';
 
 interface ProductHighlightItemProps extends React.ComponentPropsWithoutRef<'a'> {
   connectorId?: string;
+  totalItem?: number
   itemId: ItemIdModel;
   setError: React.Dispatch<React.SetStateAction<Error | undefined>>;
 }
-
-type Attribute = Record<string, string>;
-
-export function ProductHighlightItem({ connectorId, itemId, setError }: ProductHighlightItemProps): JSX.Element {
+/* eslint-disable max-len */
+export function ProductHighlightItem({ connectorId, itemId, totalItem, setError }: ProductHighlightItemProps): JSX.Element {
   const page = React.useContext(BrPageContext);
 
   const {
@@ -91,17 +90,7 @@ export function ProductHighlightItem({ connectorId, itemId, setError }: ProductH
   const selectedVariant = item?.variants?.find(
     (variant) => variant?.itemId.id === selectedItemId.id && variant?.itemId.code === selectedItemId.code,
   );
-  const { listPrice, purchasePrice, displayName, imageSet, customAttrs } = selectedVariant ?? item ?? {};
-  const customAttributes = useMemo(
-    () =>
-      customAttrs
-        ?.filter(notEmpty)
-        .reduce(
-          (result, attr) => Object.assign(result, { [attr.name]: attr.values?.filter(notEmpty).join(', ') ?? '' }),
-          {} as Attribute,
-        ),
-    [customAttrs],
-  );
+  const { listPrice, purchasePrice, displayName, imageSet } = selectedVariant ?? item ?? {};
   const price = useMemo(() => listPrice?.moneyAmounts?.[0], [listPrice]);
   const sale = useMemo(() => purchasePrice?.moneyAmounts?.[0], [purchasePrice]);
   const displayPrice = sale ?? price;
@@ -112,29 +101,52 @@ export function ProductHighlightItem({ connectorId, itemId, setError }: ProductH
   }
 
   return (
-    <Link
-      href={page?.getUrl(`/products/${item?.itemId.code ?? item?.itemId.id}`)}
-      className="col-sm-3 mb4 text-reset text-decoration-none"
-    >
-      {thumbnail && (
-        <div className={`${styles['img-container']}`}>
-          <Image src={thumbnail} alt={displayName ?? ''} />
-        </div>
-      )}
-      <div className={`${styles.name} d-block h4 text-truncate mb-3`}>{item?.displayName}</div>
-      <div className={`${styles['product-number']} text-muted`}>
-        Product No. <span className="text-primary ml-1">{item.itemId.code}</span>
-      </div>
-      <div className={`${styles.manufacturer} text-muted`}>
-        Manufacturer <span className="text-primary ml-1">{customAttributes?.brand}</span>
-      </div>
-      <h4 className="mb-4">
-        {displayPrice && (
-          <div className={`${styles.price}`}>
-            {displayPrice.currency ?? '$'} {displayPrice.amount}
+    <>
+      {
+        totalItem && totalItem > 1 && <Link
+          href={page?.getUrl(`/products/${item?.itemId.code ?? item?.itemId.id}`)}
+          className="col-sm-3 mb4 text-reset text-decoration-none"
+        >
+          {thumbnail && (
+            <div className={`${styles['img-container']}`}>
+              <Image src={thumbnail} alt={displayName ?? ''} />
+            </div>
+          )}
+          <div className={`${styles.name} d-block h4 text-truncate mb-3`}>
+            {item?.displayName}
           </div>
-        )}
-      </h4>
-    </Link>
+          <h4 className="mb-4">
+            {displayPrice && (
+              <div className={`${styles.price}`}>
+                {displayPrice.currency ?? '$'} {displayPrice.amount}
+              </div>
+            )}
+          </h4>
+        </Link>
+      }
+      {
+        totalItem && totalItem === 1 && <Link
+          href={page?.getUrl(`/products/${item?.itemId.code ?? item?.itemId.id}`)}
+          className="text-reset text-decoration-none"
+        >
+          {thumbnail && (
+            <div className={`${styles['img-container']}`}>
+              <Image src={thumbnail} alt={displayName ?? ''} />
+            </div>
+          )}
+          <div className={`${styles.name} d-block h4 text-truncate mb-3`}>
+            {item?.displayName}
+          </div>
+          <h4 className="mb-4">
+            {displayPrice && (
+              <div className={`${styles.price}`}>
+                {displayPrice.currency ?? '$'} {displayPrice.amount}
+              </div>
+            )}
+          </h4>
+        </Link>
+      }
+
+    </>
   );
 }
